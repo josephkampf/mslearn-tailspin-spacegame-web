@@ -41,13 +41,11 @@ jobs:
     parameters:
       buildConfiguration: 'Debug'
       name: 'Build Debug'
-      vmImage: $(vmImage)
 
   - template: templates/build.yml
     parameters:
       buildConfiguration: 'Release'
       name: 'Build Debug'
-      vmImage: $(vmImage)   
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
