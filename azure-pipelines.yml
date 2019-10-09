@@ -3,6 +3,6 @@
 steps:
 - script: npm install
   
-- template: templates/steps-with-params.yml  # Template reference
+- template: templates/build.yml  # Template reference
   parameters:
     runExtendedTests: 'true'
