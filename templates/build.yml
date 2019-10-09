@@ -1,19 +1,9 @@
-﻿parameters:
-  buildConfiguration: 'Release'
+﻿# File: templates/steps-with-params.yml
+
+parameters:
+  runExtendedTests: 'false'  # defaults for any parameters that aren't specified
 
 steps:
-- task: DotNetCoreCLI@2
-  displayName: 'Build the project - ${{ parameters.buildConfiguration }}'
-  inputs:
-    command: 'build'
-    arguments: '--no-restore --configuration ${{ parameters.buildConfiguration }}'
-    projects: '**/*.csproj'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Publish the project - ${{ parameters.buildConfiguration }}'
-  inputs:
-    command: 'publish'
-    projects: '**/*.csproj'
-    publishWebProjects: false
-    arguments: '--no-build --configuration ${{ parameters.buildConfiguration }} --output $(Build.ArtifactStagingDirectory)/${{ parameters.BuildConfiguration }}'
-    zipAfterPublish: true
+- script: npm test
+- ${{ if eq(parameters.runExtendedTests, 'true') }}:
+  - script: npm test --extended
