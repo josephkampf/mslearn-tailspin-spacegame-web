@@ -1,7 +1,7 @@
 ﻿parameters:
-  buildConfiguration: 'Release'
-  name: ''
-  vmImage: ''
+    buildConfiguration: 'Release'
+    name: ''
+    vmImage: ''
 
 steps:
   - task: DotNetCoreCLI@2
