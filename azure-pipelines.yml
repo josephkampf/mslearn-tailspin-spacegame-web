@@ -2,6 +2,7 @@ variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetSdkVersion: '2.1.505'
+  vmImage: 'Ubuntu-16.04'
   
 jobs:
 - job:
@@ -39,10 +40,14 @@ jobs:
   - template: templates/build.yml
     parameters:
       buildConfiguration: 'Debug'
+      name: 'Build Debug'
+      vmImage: $(vmImage)
 
   - template: templates/build.yml
     parameters:
       buildConfiguration: 'Release'
+      name: 'Build Debug'
+      vmImage: $(vmImage)   
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
